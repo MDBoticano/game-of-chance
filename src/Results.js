@@ -1,17 +1,21 @@
 import React from 'react';
 
+import './Results.css';
+
 class Results extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   render() {
     return (
-      <h1>
-      {
-        /* change code here */
-        this.props.fiftyFifty
-      }
-      </h1>
+      <div className="results">
+        <h1>
+        {
+          /* change code here */
+          (this.props.fiftyFifty)
+        }
+        </h1>
+      </div>
     )
   };
 };
