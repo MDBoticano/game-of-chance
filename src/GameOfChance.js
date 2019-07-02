@@ -1,9 +1,7 @@
-import React from 'react';
-
+import React, { Component } from 'react';
 import Results from './Results';
 
-
-class GameOfChance extends React.Component {
+class GameOfChance extends Component {
   constructor(props) {
     super(props);
     this.state = {
