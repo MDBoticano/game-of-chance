@@ -3,12 +3,12 @@ import React from 'react';
 import './Results.css';
 
 class Results extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
-    console.log("Result rendered");
+    // console.log("Result rendered");
     return (
       <div className={"results " + this.props.fiftyFifty + "Status"}>
         <h1>

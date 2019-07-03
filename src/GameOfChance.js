@@ -1,7 +1,20 @@
 import React from 'react';
+
 import Results from './Results';
+import WinModifier from './WinModifier';
 
 import './GameOfChance.css';
+
+/* Goals */
+/* 
+ * 1) Slider to modify win chance (chanceToWin)
+ * 2) Reset button
+ * 3) More statistics 
+ */
+
+
+/* Modify this if you want to change win change: between 0 - 1.0  */
+const chanceToWin = 0.75;
 
 class GameOfChance extends React.Component {
   constructor(props) {
@@ -10,11 +23,11 @@ class GameOfChance extends React.Component {
       playState: "Click me!",
       expression: null,
       counter: 0,
+      chanceToWin: chanceToWin,
       wins: 0
     }
     this.handleClick = this.handleClick.bind(this);
     this.newBool = this.newBool.bind(this);
-    this.updateWins = this.updateWins.bind(this);
   }
 
   handleClick() {
@@ -22,7 +35,7 @@ class GameOfChance extends React.Component {
     let expression = this.newBool();
 
     // You've heard of ternary, what about unary?
-    // "(+ expression)"" converts boolean into int using unary
+    // "(+ expression)"" converts the boolean "expression"" into int via unary
     this.setState({
       playState: 'Play again!',
       expression: expression,
@@ -31,38 +44,23 @@ class GameOfChance extends React.Component {
     });
   }
 
-  updateWins(bool) {
-    if(bool) {
-      this.setState({
-        wins: this.state.wins + 1
-      })
-    }
-  }
-
   newBool() {
-    let newBool = Math.random() > .5;
+    let newBool = Math.random() > (1 - this.state.chanceToWin);
     // console.log("newBool: " + newBool);
     return newBool;
   }
 
   render() {
-    console.log("Game rendered");
-    // let expression = Math.random() > .5; // change code here
-    // console.log(expression); // boolean
-    
-    
-    // let expression = this.newBool();
-
+    // console.log("Game rendered");
     return (
       <div className="gameOfChance">
-        <button onClick={this.handleClick}>{this.state.playState}</button>
-        { /* change code below this line */ }
         <Results fiftyFifty={this.state.expression} />
-        { /* change code above this line */ }
+        <button className="playButton" onClick={this.handleClick}>{this.state.playState}</button>
         <p>{'Turn: ' + this.state.counter}</p>
         <p>Wins: {this.state.wins}</p>
         <p>Losses: {this.state.counter - this.state.wins}</p>
         <p>W/L Ratio: {(this.state.wins / this.state.counter).toFixed(3) }</p>
+        <WinModifier chanceToWin={this.state.chanceToWin} />
       </div>
     );
   }

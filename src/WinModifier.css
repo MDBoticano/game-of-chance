@@ -1,0 +1,23 @@
+.WinModifier {
+  /* background-color: red; */
+  border-top: solid black 2px;
+  margin: 2em 0;
+}
+
+button {
+  margin: .5em;
+  padding: .5em;
+  font-size: 1em;
+  text-align: center;
+  background-color: rgb(230, 230, 230);
+}
+
+.winChance {
+  font-family: monospace;
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.slider {
+  width: 20%;
+}
