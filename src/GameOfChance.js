@@ -28,6 +28,7 @@ class GameOfChance extends React.Component {
     }
     this.handleClick = this.handleClick.bind(this);
     this.newBool = this.newBool.bind(this);
+    this.updateChanceToWin = this.updateChanceToWin.bind(this);
   }
 
   handleClick() {
@@ -50,6 +51,12 @@ class GameOfChance extends React.Component {
     return newBool;
   }
 
+  updateChanceToWin(newValue) {
+    this.setState({
+      chanceToWin: newValue
+    });
+  }
+
   render() {
     // console.log("Game rendered");
     return (
@@ -60,7 +67,7 @@ class GameOfChance extends React.Component {
         <p>Wins: {this.state.wins}</p>
         <p>Losses: {this.state.counter - this.state.wins}</p>
         <p>W/L Ratio: {(this.state.wins / this.state.counter).toFixed(3) }</p>
-        <WinModifier chanceToWin={this.state.chanceToWin} />
+        <WinModifier chanceToWin={this.state.chanceToWin} updateChanceToWin={this.updateChanceToWin}/>
       </div>
     );
   }

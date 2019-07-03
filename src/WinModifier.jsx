@@ -13,32 +13,18 @@ class WinModifier extends React.Component {
       chanceToWin: props.chanceToWin,
       formattedChance: -1
     }
-    this.formatChance = this.formatChance.bind(this);
     this.formatValue = this.formatValue.bind(this);
     this.formatAsDecimal = this.formatAsDecimal.bind(this);
     this.formatAsPercentage = this.formatAsPercentage.bind(this);
     this.updateChance = this.updateChance.bind(this);
   }
 
-  formatChance(format) {
-    switch(format) {
-      case 'decimal':
-        // console.log(DECIMAL);
-        return this.state.chanceToWin.toFixed(3);
-      case 'percentage':
-        // console.log(PERCENTAGE);
-        return (this.state.chanceToWin * 100).toFixed(0) + "%"
-      default:
-        break;
-    }
-  }
-
   formatValue(format, value) {
     switch(format) {
-      case 'decimal':
+      case DECIMAL:
         // console.log(DECIMAL);
         return value;
-      case 'percentage':
+      case PERCENTAGE:
         // console.log(PERCENTAGE);
         return (value * 100).toFixed(0) + "%"
       default:
@@ -66,14 +52,15 @@ class WinModifier extends React.Component {
     this.setState({
       chanceToWin: event.target.value,
       formattedChance: this.formatValue(this.state.format, event.target.value)
-    })
+    });
+    this.props.updateChanceToWin(event.target.value);
   }
 
   componentDidMount() {
     // console.log("Formatting chance");
     // console.log(this.state.format);
     this.setState({
-      formattedChance: this.formatChance(this.state.format)
+      formattedChance: this.formatValue(this.state.format, this.state.chanceToWin)
     });
   }
 
