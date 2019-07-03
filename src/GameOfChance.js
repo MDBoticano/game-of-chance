@@ -7,27 +7,60 @@ class GameOfChance extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter: 1
+      playState: "Click me!",
+      expression: null,
+      counter: 1,
+      wins: 0
     }
     this.handleClick = this.handleClick.bind(this);
+    this.newBool = this.newBool.bind(this);
+    this.updateWins = this.updateWins.bind(this);
   }
+
   handleClick() {
+    console.log("Click handling...");
+    let expression = this.newBool();
+
+    // You've heard of ternary, what about unary?
+    // "(+ expression)"" converts boolean into int using unary
     this.setState({
-      counter: this.state.counter + 1 // change code here
+      playState: 'Play again!',
+      expression: expression,
+      counter: this.state.counter + 1,
+      wins: this.state.wins + (+ expression)
     });
   }
+
+  updateWins(bool) {
+    if(bool) {
+      this.setState({
+        wins: this.state.wins + 1
+      })
+    }
+  }
+
+  newBool() {
+    let newBool = Math.random() > .5;
+    console.log("newBool: " + newBool);
+    return newBool;
+  }
+
   render() {
     console.log("GOC Render");
-    let expression = Math.random() > .5; // change code here
-    console.log(expression); // boolean
+    // let expression = Math.random() > .5; // change code here
+    // console.log(expression); // boolean
+    
+    
+    // let expression = this.newBool();
+
     return (
       <div className="gameOfChance">
-        <button onClick={this.handleClick}>Play Again</button>
+        <button onClick={this.handleClick}>{this.state.playState}</button>
         { /* change code below this line */ }
-        {/* {expression ? <Results fiftyFifty="You win!"/> : <Results fiftyFifty="You lose!"/> } */}
-        <Results fiftyFifty={expression} />
+        <Results fiftyFifty={this.state.expression} />
         { /* change code above this line */ }
         <p>{'Turn: ' + this.state.counter}</p>
+        <p>Wins: {this.state.wins}</p>
       </div>
     );
   }
