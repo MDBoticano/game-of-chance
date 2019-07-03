@@ -1,6 +1,17 @@
 .results {
   margin: 2em;
   border: solid 1px black;
+  background-color: rgb(190, 190, 190);
+}
+
+.nullStatus {
+  background-color: rgb(190, 190, 190);
+}
+
+.falseStatus {
   background-color: rgb(226, 179, 179);
 }
 
+.trueStatus {
+  background-color: rgb(183, 226, 179);
+}

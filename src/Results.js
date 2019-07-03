@@ -8,8 +8,9 @@ class Results extends React.Component {
   }
 
   render() {
+    console.log("Result rendered");
     return (
-      <div className="results">
+      <div className={"results " + this.props.fiftyFifty + "Status"}>
         <h1>
         {
           /* change code here */

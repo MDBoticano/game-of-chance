@@ -9,7 +9,7 @@ class GameOfChance extends React.Component {
     this.state = {
       playState: "Click me!",
       expression: null,
-      counter: 1,
+      counter: 0,
       wins: 0
     }
     this.handleClick = this.handleClick.bind(this);
@@ -18,7 +18,7 @@ class GameOfChance extends React.Component {
   }
 
   handleClick() {
-    console.log("Click handling...");
+    // console.log("Click handling...");
     let expression = this.newBool();
 
     // You've heard of ternary, what about unary?
@@ -41,12 +41,12 @@ class GameOfChance extends React.Component {
 
   newBool() {
     let newBool = Math.random() > .5;
-    console.log("newBool: " + newBool);
+    // console.log("newBool: " + newBool);
     return newBool;
   }
 
   render() {
-    console.log("GOC Render");
+    console.log("Game rendered");
     // let expression = Math.random() > .5; // change code here
     // console.log(expression); // boolean
     
@@ -61,6 +61,8 @@ class GameOfChance extends React.Component {
         { /* change code above this line */ }
         <p>{'Turn: ' + this.state.counter}</p>
         <p>Wins: {this.state.wins}</p>
+        <p>Losses: {this.state.counter - this.state.wins}</p>
+        <p>W/L Ratio: {(this.state.wins / this.state.counter).toFixed(3) }</p>
       </div>
     );
   }
