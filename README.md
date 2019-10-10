@@ -1,3 +1,9 @@
+# Game of Chance
+I created a React app extending one of FreeCodeCamp's React challenges [(Render Conditionally from Props)](https://learn.freecodecamp.org/front-end-libraries/react/render-conditionally-from-props). I added a slider to let a user modify the probabilities of the outcome.
+
+----
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
